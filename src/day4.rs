@@ -1,4 +1,4 @@
-use std::{fmt::format, i8};
+use std::i8;
 
 struct Grid {
     values: Vec<Vec<char>>,
