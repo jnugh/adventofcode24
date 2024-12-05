@@ -1,9 +1,9 @@
 use std::{collections::HashMap, iter::zip};
 
-pub fn day1_part1(input: String) {
+pub fn day1_part1(input: String) -> usize {
     let (mut list1, mut list2) = parse(input);
-    list1.sort();
-    list2.sort();
+    list1.sort_unstable();
+    list2.sort_unstable();
 
     let mut total_distance = 0;
 
@@ -11,10 +11,10 @@ pub fn day1_part1(input: String) {
         total_distance += value1.abs_diff(value2)
     }
 
-    println!("Result: {total_distance}")
+    total_distance
 }
 
-pub fn day1_part2(input: String) {
+pub fn day1_part2(input: String) -> usize {
     let (list1, list2) = parse(input);
 
     let mut counts = HashMap::<usize, usize>::new();
@@ -27,7 +27,7 @@ pub fn day1_part2(input: String) {
         score += value * counts.get(&value).unwrap_or(&0);
     }
 
-    println!("Result: {score}")
+    score
 }
 
 fn parse(input: String) -> (Vec<usize>, Vec<usize>) {
