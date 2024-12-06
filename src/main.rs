@@ -3,6 +3,7 @@ mod day2;
 mod day3;
 mod day4;
 mod day5;
+mod day6;
 mod util;
 
 use clap::{ArgAction, Parser, Subcommand};
@@ -11,6 +12,7 @@ use day2::{day2_part1, day2_part2};
 use day3::{day3_part1, day3_part2};
 use day4::{day4_part1, day4_part2};
 use day5::{day5_part1, day5_part2};
+use day6::{day6_part1, day6_part2};
 use std::path::PathBuf;
 use util::read_input_or_crash;
 
@@ -56,6 +58,10 @@ enum Commands {
     Day5_1,
     /// Day 5: Print Queue: part 2
     Day5_2,
+    /// Day 5: Guard Gallivant: part 1
+    Day6_1,
+    /// Day 5: Guard Gallivant: part 2
+    Day6_2,
 }
 
 fn main() {
@@ -81,6 +87,8 @@ fn main() {
         Commands::Day4_2 => day4_part2(input),
         Commands::Day5_1 => day5_part1(input),
         Commands::Day5_2 => day5_part2(input),
+        Commands::Day6_1 => day6_part1(input),
+        Commands::Day6_2 => day6_part2(input),
     };
 
     println!("Result: {result}")
