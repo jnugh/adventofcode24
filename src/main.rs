@@ -1,4 +1,5 @@
 mod day1;
+mod day10;
 mod day2;
 mod day3;
 mod day4;
@@ -6,10 +7,12 @@ mod day5;
 mod day6;
 mod day7;
 mod day8;
+mod day9;
 mod util;
 
 use clap::{ArgAction, Parser, Subcommand};
 use day1::{day1_part1, day1_part2};
+use day10::{day10_part1, day10_part2};
 use day2::{day2_part1, day2_part2};
 use day3::{day3_part1, day3_part2};
 use day4::{day4_part1, day4_part2};
@@ -17,6 +20,7 @@ use day5::{day5_part1, day5_part2};
 use day6::{day6_part1, day6_part2};
 use day7::{day7_part1, day7_part2};
 use day8::{day8_part1, day8_part2};
+use day9::{day9_part1, day9_part2};
 use std::path::PathBuf;
 use util::read_input_or_crash;
 
@@ -72,8 +76,16 @@ enum Commands {
     Day7_2,
     ///Day 8: Resonant Collinearity: part 1
     Day8_1,
-    ///Day 8: Resonant Collinearity: part 1
+    ///Day 8: Resonant Collinearity: part 2
     Day8_2,
+    ///Day 9: Disk Fragmenter: part 1
+    Day9_1,
+    ///Day 9: Disk Fragmenter: part 2
+    Day9_2,
+    ///Day 10: Disk Fragmenter: part 1
+    Day10_1,
+    ///Day 10: Disk Fragmenter: part 2
+    Day10_2,
 }
 
 fn main() {
@@ -105,6 +117,10 @@ fn main() {
         Commands::Day7_2 => day7_part2(input),
         Commands::Day8_1 => day8_part1(input),
         Commands::Day8_2 => day8_part2(input),
+        Commands::Day9_1 => day9_part1(input),
+        Commands::Day9_2 => day9_part2(input),
+        Commands::Day10_1 => day10_part1(input),
+        Commands::Day10_2 => day10_part2(input),
     };
 
     println!("Result: {result}")
