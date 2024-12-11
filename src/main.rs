@@ -1,5 +1,6 @@
 mod day1;
 mod day10;
+mod day11;
 mod day2;
 mod day3;
 mod day4;
@@ -13,6 +14,7 @@ mod util;
 use clap::{ArgAction, Parser, Subcommand};
 use day1::{day1_part1, day1_part2};
 use day10::{day10_part1, day10_part2};
+use day11::{day11_part1, day11_part2};
 use day2::{day2_part1, day2_part2};
 use day3::{day3_part1, day3_part2};
 use day4::{day4_part1, day4_part2};
@@ -82,10 +84,14 @@ enum Commands {
     Day9_1,
     ///Day 9: Disk Fragmenter: part 2
     Day9_2,
-    ///Day 10: Disk Fragmenter: part 1
+    ///Day 10: Hoof It: part 1
     Day10_1,
-    ///Day 10: Disk Fragmenter: part 2
+    ///Day 10: Hoof It: part 2
     Day10_2,
+    ///Day 11: Plutonian Pebbles: part 1
+    Day11_1,
+    ///Day 11: Plutonian Pebbles: part 2
+    Day11_2,
 }
 
 fn main() {
@@ -121,6 +127,8 @@ fn main() {
         Commands::Day9_2 => day9_part2(input),
         Commands::Day10_1 => day10_part1(input),
         Commands::Day10_2 => day10_part2(input),
+        Commands::Day11_1 => day11_part1(input),
+        Commands::Day11_2 => day11_part2(input),
     };
 
     println!("Result: {result}")
