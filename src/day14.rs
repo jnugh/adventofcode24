@@ -1,5 +1,3 @@
-use std::{collections::HashSet, io};
-
 use itertools::Itertools;
 
 #[derive(Debug)]
@@ -64,7 +62,7 @@ impl SecureArea {
                     print!(" ");
                 }
             }
-            println!("");
+            println!();
         }
     }
 

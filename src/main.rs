@@ -4,6 +4,7 @@ mod day11;
 mod day12;
 mod day13;
 mod day14;
+mod day15;
 mod day2;
 mod day3;
 mod day4;
@@ -21,6 +22,7 @@ use day11::{day11_part1, day11_part2};
 use day12::{day12_part1, day12_part2};
 use day13::{day13_part1, day13_part2};
 use day14::{day14_part1, day14_part2};
+use day15::{day15_part1, day15_part2};
 use day2::{day2_part1, day2_part2};
 use day3::{day3_part1, day3_part2};
 use day4::{day4_part1, day4_part2};
@@ -110,6 +112,10 @@ enum Commands {
     Day14_1,
     ///Day 14: Restroom Redoubt: part 2
     Day14_2,
+    ///Day 15: Warehouse Woes: part 1
+    Day15_1,
+    ///Day 15: Warehouse Woes: part 2
+    Day15_2,
 }
 
 fn main() {
@@ -153,6 +159,8 @@ fn main() {
         Commands::Day13_2 => day13_part2(input),
         Commands::Day14_1 => day14_part1(input),
         Commands::Day14_2 => day14_part2(input),
+        Commands::Day15_1 => day15_part1(input),
+        Commands::Day15_2 => day15_part2(input),
     };
 
     println!("Result: {result}")
