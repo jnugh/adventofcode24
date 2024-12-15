@@ -1,5 +1,3 @@
-use std::i8;
-
 struct Grid {
     values: Vec<Vec<char>>,
     width: usize,
@@ -12,9 +10,8 @@ pub fn day4_part1(input: String) -> usize {
 
     for line_index in 0..grid.values.len() {
         let line = &grid.values[line_index];
-        for char_index in 0..line.len() {
-            let c = line[char_index];
-            if c == 'X' {
+        for (char_index, c) in line.iter().enumerate() {
+            if *c == 'X' {
                 sum += count_xmas(&grid, line_index, char_index);
             }
         }
@@ -29,9 +26,8 @@ pub fn day4_part2(input: String) -> usize {
 
     for line_index in 0..grid.values.len() {
         let line = &grid.values[line_index];
-        for char_index in 0..line.len() {
-            let c = line[char_index];
-            if c == 'A' {
+        for (char_index, c) in line.iter().enumerate() {
+            if *c == 'A' {
                 sum += count_x_mas(&grid, line_index, char_index);
             }
         }
@@ -115,7 +111,7 @@ fn count_xmas_direction(
 fn check_bound(max: usize, start: usize, direction: i8) -> bool {
     match direction {
         0 => true,
-        i8::MIN..0 => ((4 * direction).abs() as usize) <= start + 1,
+        i8::MIN..0 => ((4 * direction).unsigned_abs() as usize) <= start + 1,
         1..=i8::MAX => (4 * direction) as usize + start <= max,
     }
 }

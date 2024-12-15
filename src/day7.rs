@@ -36,7 +36,7 @@ impl Calibration {
         }
     }
 
-    fn calculate_result(&self, operators: &Vec<Operator>) -> usize {
+    fn calculate_result(&self, operators: &[Operator]) -> usize {
         let mut result = self.numbers[0];
         for (index, num) in self.numbers.clone().into_iter().skip(1).enumerate() {
             let operator = &operators[index];
@@ -105,7 +105,7 @@ fn parse_complete_input(input: String) -> Vec<Calibration> {
     input
         .trim()
         .split("\n")
-        .map(|l| Calibration::parse_input(l))
+        .map(Calibration::parse_input)
         .collect()
 }
 
@@ -176,7 +176,7 @@ mod test {
             solvable: Some(true),
         };
 
-        assert_eq!(12345, test.calculate_result(&vec![Operator::Concat]));
+        assert_eq!(12345, test.calculate_result(&[Operator::Concat]));
     }
 
     #[test]
@@ -189,7 +189,7 @@ mod test {
             solvable: Some(true),
         };
 
-        assert_eq!(12045, test.calculate_result(&vec![Operator::Concat]));
+        assert_eq!(12045, test.calculate_result(&[Operator::Concat]));
     }
 
     #[test]
@@ -202,7 +202,7 @@ mod test {
             solvable: Some(true),
         };
 
-        assert_eq!(1201, test.calculate_result(&vec![Operator::Concat]));
+        assert_eq!(1201, test.calculate_result(&[Operator::Concat]));
     }
 
     #[test]

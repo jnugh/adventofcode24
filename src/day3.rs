@@ -18,10 +18,10 @@ pub fn day3_part2(input: String) -> usize {
     let mut last_do_index = 0;
     for dont_position in donts {
         let mut dont_end: Option<usize> = None;
-        for i in last_do_index..dos.len() {
-            if dos[i] > dont_position {
+        for (i, doit) in dos.iter().enumerate().skip(last_do_index) {
+            if *doit > dont_position {
                 last_do_index = i;
-                dont_end = Some(dos[i]);
+                dont_end = Some(*doit);
                 break;
             }
         }
@@ -42,8 +42,7 @@ pub fn day3_part2(input: String) -> usize {
         if disabled_ranges
             .clone()
             .into_iter()
-            .find(|(start, end)| *start < offset && *end > offset)
-            .is_some()
+            .any(|(start, end)| start < offset && end > offset)
         {
             continue;
         }

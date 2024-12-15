@@ -1,5 +1,3 @@
-use std::usize;
-
 #[derive(Clone, Debug, PartialEq, Eq)]
 enum Data {
     Empty,
@@ -77,25 +75,29 @@ impl Disk {
     }
 
     fn migrate(&mut self, src: usize, dst: usize) {
-        if self.data[dst].len > self.data[src].len {
-            self.data[dst].len -= self.data[src].len;
-            let old_item = self.data.remove(src);
-            self.data.insert(
-                src,
-                Block {
-                    data: Data::Empty,
-                    len: old_item.len,
-                },
-            );
-            self.data.insert(dst, old_item);
-        } else if self.data[dst].len < self.data[src].len {
-            let dst_size = self.data[dst].len;
-            self.data[dst] = self.data[src].clone();
-            self.data[dst].len = dst_size;
-            self.data[src].len -= dst_size;
-        } else {
-            self.data[dst] = self.data[src].clone();
-            self.data[src].data = Data::Empty;
+        match self.data[dst].len.cmp(&self.data[src].len) {
+            std::cmp::Ordering::Greater => {
+                self.data[dst].len -= self.data[src].len;
+                let old_item = self.data.remove(src);
+                self.data.insert(
+                    src,
+                    Block {
+                        data: Data::Empty,
+                        len: old_item.len,
+                    },
+                );
+                self.data.insert(dst, old_item);
+            }
+            std::cmp::Ordering::Less => {
+                let dst_size = self.data[dst].len;
+                self.data[dst] = self.data[src].clone();
+                self.data[dst].len = dst_size;
+                self.data[src].len -= dst_size;
+            }
+            std::cmp::Ordering::Equal => {
+                self.data[dst] = self.data[src].clone();
+                self.data[src].data = Data::Empty;
+            }
         }
 
         let mut compacts: Vec<usize> = Vec::new();
@@ -112,7 +114,7 @@ impl Disk {
         }
     }
 
-    fn files_reverse<'a>(&'a self) -> impl Iterator<Item = (usize, &Block)> {
+    fn files_reverse(&self) -> impl Iterator<Item = (usize, &Block)> {
         self.data
             .iter()
             .enumerate()
@@ -120,7 +122,7 @@ impl Disk {
             .filter(|(_, v)| v.data.is_file())
     }
 
-    fn get_empty_slots<'a>(&'a self) -> impl Iterator<Item = (usize, &Block)> {
+    fn get_empty_slots(&self) -> impl Iterator<Item = (usize, &Block)> {
         self.data
             .iter()
             .enumerate()
@@ -155,10 +157,7 @@ fn defrag_file_level(data: &mut Disk) {
         let orig = data.clone();
         let files: Vec<(usize, &Block)> = orig
             .files_reverse()
-            .filter(|(_, d)| match d.data {
-                Data::Occupied(x) if x < last_id => true,
-                _ => false,
-            })
+            .filter(|(_, d)| matches!(d.data, Data::Occupied(x) if x < last_id))
             .collect();
         let empty_slots: Vec<(usize, &Block)> = orig.get_empty_slots().collect();
 

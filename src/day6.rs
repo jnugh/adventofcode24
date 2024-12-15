@@ -210,15 +210,13 @@ impl Map {
                     return false;
                 } else if self.obstacles.contains(&new_position) {
                     self.guard_direction = self.guard_direction.rotate();
+                } else if visit_directions.contains(&(new_position, self.guard_direction)) {
+                    return true;
                 } else {
-                    if visit_directions.contains(&(new_position, self.guard_direction)) {
-                        return true;
-                    } else {
-                        visit_directions.insert((new_position, self.guard_direction));
+                    visit_directions.insert((new_position, self.guard_direction));
 
-                        self.visited.insert(new_position);
-                        self.guard_position = Some(new_position);
-                    }
+                    self.visited.insert(new_position);
+                    self.guard_position = Some(new_position);
                 }
             }
         }

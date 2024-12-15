@@ -104,7 +104,7 @@ impl PrintingInstructions {
         self.updates
             .clone()
             .into_iter()
-            .filter(|update| self.is_valid_update(&update))
+            .filter(|update| self.is_valid_update(update))
             .collect()
     }
 
@@ -112,7 +112,7 @@ impl PrintingInstructions {
         self.updates
             .clone()
             .into_iter()
-            .filter(|update| !self.is_valid_update(&update))
+            .filter(|update| !self.is_valid_update(update))
             .map(|update| self.fix_ordering(&update))
             .collect()
     }
@@ -126,11 +126,8 @@ impl PrintingInstructions {
             let rules = self.orders.get(number);
             if let Some(rules) = rules {
                 for rule in rules {
-                    match rule {
-                        Ordering::After(after) => {
-                            forbidden_following.insert(*after);
-                        }
-                        _ => {}
+                    if let Ordering::After(after) = rule {
+                        forbidden_following.insert(*after);
                     }
                 }
             }
@@ -139,9 +136,9 @@ impl PrintingInstructions {
         true
     }
 
-    fn fix_ordering(&self, update: &Vec<usize>) -> Vec<usize> {
+    fn fix_ordering(&self, update: &[usize]) -> Vec<usize> {
         let mut result: Vec<SortablePage<'_>> = update
-            .into_iter()
+            .iter()
             .map(|page| SortablePage {
                 page: *page,
                 orders: &self.orders,

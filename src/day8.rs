@@ -87,8 +87,8 @@ impl Map {
     }
 
     fn place_antinodes(&mut self, repeating_pattern: bool) {
-        for (_frequency, antenna_positions) in &self.antennas {
-            for antenna_pair in antenna_positions.into_iter().permutations(2) {
+        for antenna_positions in self.antennas.values() {
+            for antenna_pair in antenna_positions.iter().permutations(2) {
                 let antenna1 = *antenna_pair[0];
                 let antenna2 = *antenna_pair[1];
 

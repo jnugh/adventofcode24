@@ -42,7 +42,7 @@ impl Game {
     }
 
     fn count_numbers(&self) -> usize {
-        self.numbers.iter().map(|(_, count)| count).sum()
+        self.numbers.values().sum()
     }
 }
 
@@ -63,7 +63,7 @@ pub fn day11_part1(input: String) -> usize {
 pub fn day11_part2(input: String) -> usize {
     let mut game = Game::from_input(input);
 
-    for i in 0..75 {
+    for _ in 0..75 {
         game = game.step();
     }
 

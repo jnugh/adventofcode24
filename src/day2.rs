@@ -24,9 +24,14 @@ impl Report {
         assert!(self.levels.len() > 1);
 
         let is_ascending = self.levels[1] > self.levels[0];
-        let mut i = 0;
 
-        for pair in self.levels.clone().into_iter().tuple_windows::<(_, _)>() {
+        for (i, pair) in self
+            .levels
+            .clone()
+            .into_iter()
+            .tuple_windows::<(_, _)>()
+            .enumerate()
+        {
             if is_ascending && pair.1 < pair.0 {
                 if enable_problem_dampener {
                     return self.is_save_with_problem_dampener(i);
@@ -42,14 +47,13 @@ impl Report {
                 }
             }
             let distance = pair.0.abs_diff(pair.1);
-            if distance < 1 || distance > 3 {
+            if !(1..=3).contains(&distance) {
                 if enable_problem_dampener {
                     return self.is_save_with_problem_dampener(i);
                 } else {
                     return false;
                 }
             }
-            i += 1;
         }
 
         true
@@ -86,23 +90,19 @@ impl FromStr for Report {
 pub fn day2_part1(input: String) -> usize {
     let reports = parse_input(input).unwrap();
 
-    let result = reports
+    reports
         .into_iter()
         .filter(|report| report.is_safe(false))
-        .count();
-
-    result
+        .count()
 }
 
 pub fn day2_part2(input: String) -> usize {
     let reports = parse_input(input).unwrap();
 
-    let result = reports
+    reports
         .into_iter()
         .filter(|report| report.is_safe(true))
-        .count();
-
-    result
+        .count()
 }
 
 fn parse_input(input: String) -> Result<Vec<Report>, ReportParsingError> {

@@ -1,6 +1,9 @@
 mod day1;
 mod day10;
 mod day11;
+mod day12;
+mod day13;
+mod day14;
 mod day2;
 mod day3;
 mod day4;
@@ -15,6 +18,9 @@ use clap::{ArgAction, Parser, Subcommand};
 use day1::{day1_part1, day1_part2};
 use day10::{day10_part1, day10_part2};
 use day11::{day11_part1, day11_part2};
+use day12::{day12_part1, day12_part2};
+use day13::{day13_part1, day13_part2};
+use day14::{day14_part1, day14_part2};
 use day2::{day2_part1, day2_part2};
 use day3::{day3_part1, day3_part2};
 use day4::{day4_part1, day4_part2};
@@ -92,6 +98,18 @@ enum Commands {
     Day11_1,
     ///Day 11: Plutonian Pebbles: part 2
     Day11_2,
+    ///Day 12: Garden Groups: part 1
+    Day12_1,
+    ///Day 12: Garden Groups: part 2
+    Day12_2,
+    ///Day 13: Claw Contraption: part 1
+    Day13_1,
+    ///Day 13: Claw Contraption: part 2
+    Day13_2,
+    ///Day 14: Restroom Redoubt: part 1
+    Day14_1,
+    ///Day 14: Restroom Redoubt: part 2
+    Day14_2,
 }
 
 fn main() {
@@ -129,6 +147,12 @@ fn main() {
         Commands::Day10_2 => day10_part2(input),
         Commands::Day11_1 => day11_part1(input),
         Commands::Day11_2 => day11_part2(input),
+        Commands::Day12_1 => day12_part1(input),
+        Commands::Day12_2 => day12_part2(input),
+        Commands::Day13_1 => day13_part1(input),
+        Commands::Day13_2 => day13_part2(input),
+        Commands::Day14_1 => day14_part1(input),
+        Commands::Day14_2 => day14_part2(input),
     };
 
     println!("Result: {result}")
