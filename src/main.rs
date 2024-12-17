@@ -5,6 +5,8 @@ mod day12;
 mod day13;
 mod day14;
 mod day15;
+mod day16;
+mod day17;
 mod day2;
 mod day3;
 mod day4;
@@ -23,6 +25,8 @@ use day12::{day12_part1, day12_part2};
 use day13::{day13_part1, day13_part2};
 use day14::{day14_part1, day14_part2};
 use day15::{day15_part1, day15_part2};
+use day16::{day16_part1, day16_part2};
+use day17::{day17_part1, day17_part2};
 use day2::{day2_part1, day2_part2};
 use day3::{day3_part1, day3_part2};
 use day4::{day4_part1, day4_part2};
@@ -116,6 +120,14 @@ enum Commands {
     Day15_1,
     ///Day 15: Warehouse Woes: part 2
     Day15_2,
+    ///Day 16: Reindeer Maze: part 1
+    Day16_1,
+    ///Day 16: Reindeer Maze: part 2
+    Day16_2,
+    ///Day 17: Chronospatial Computer: part 1
+    Day17_1,
+    ///Day 17: Chronospatial Computer: part 2
+    Day17_2,
 }
 
 fn main() {
@@ -130,37 +142,41 @@ fn main() {
 
     let input = read_input_or_crash(args.input);
 
-    let result = match args.command {
-        Commands::Day1_1 => day1_part1(input),
-        Commands::Day1_2 => day1_part2(input),
-        Commands::Day2_1 => day2_part1(input),
-        Commands::Day2_2 => day2_part2(input),
-        Commands::Day3_1 => day3_part1(input),
-        Commands::Day3_2 => day3_part2(input),
-        Commands::Day4_1 => day4_part1(input),
-        Commands::Day4_2 => day4_part2(input),
-        Commands::Day5_1 => day5_part1(input),
-        Commands::Day5_2 => day5_part2(input),
-        Commands::Day6_1 => day6_part1(input),
-        Commands::Day6_2 => day6_part2(input),
-        Commands::Day7_1 => day7_part1(input),
-        Commands::Day7_2 => day7_part2(input),
-        Commands::Day8_1 => day8_part1(input),
-        Commands::Day8_2 => day8_part2(input),
-        Commands::Day9_1 => day9_part1(input),
-        Commands::Day9_2 => day9_part2(input),
-        Commands::Day10_1 => day10_part1(input),
-        Commands::Day10_2 => day10_part2(input),
-        Commands::Day11_1 => day11_part1(input),
-        Commands::Day11_2 => day11_part2(input),
-        Commands::Day12_1 => day12_part1(input),
-        Commands::Day12_2 => day12_part2(input),
-        Commands::Day13_1 => day13_part1(input),
-        Commands::Day13_2 => day13_part2(input),
-        Commands::Day14_1 => day14_part1(input),
-        Commands::Day14_2 => day14_part2(input),
-        Commands::Day15_1 => day15_part1(input),
-        Commands::Day15_2 => day15_part2(input),
+    let result: String = match args.command {
+        Commands::Day1_1 => day1_part1(input).to_string(),
+        Commands::Day1_2 => day1_part2(input).to_string(),
+        Commands::Day2_1 => day2_part1(input).to_string(),
+        Commands::Day2_2 => day2_part2(input).to_string(),
+        Commands::Day3_1 => day3_part1(input).to_string(),
+        Commands::Day3_2 => day3_part2(input).to_string(),
+        Commands::Day4_1 => day4_part1(input).to_string(),
+        Commands::Day4_2 => day4_part2(input).to_string(),
+        Commands::Day5_1 => day5_part1(input).to_string(),
+        Commands::Day5_2 => day5_part2(input).to_string(),
+        Commands::Day6_1 => day6_part1(input).to_string(),
+        Commands::Day6_2 => day6_part2(input).to_string(),
+        Commands::Day7_1 => day7_part1(input).to_string(),
+        Commands::Day7_2 => day7_part2(input).to_string(),
+        Commands::Day8_1 => day8_part1(input).to_string(),
+        Commands::Day8_2 => day8_part2(input).to_string(),
+        Commands::Day9_1 => day9_part1(input).to_string(),
+        Commands::Day9_2 => day9_part2(input).to_string(),
+        Commands::Day10_1 => day10_part1(input).to_string(),
+        Commands::Day10_2 => day10_part2(input).to_string(),
+        Commands::Day11_1 => day11_part1(input).to_string(),
+        Commands::Day11_2 => day11_part2(input).to_string(),
+        Commands::Day12_1 => day12_part1(input).to_string(),
+        Commands::Day12_2 => day12_part2(input).to_string(),
+        Commands::Day13_1 => day13_part1(input).to_string(),
+        Commands::Day13_2 => day13_part2(input).to_string(),
+        Commands::Day14_1 => day14_part1(input).to_string(),
+        Commands::Day14_2 => day14_part2(input).to_string(),
+        Commands::Day15_1 => day15_part1(input).to_string(),
+        Commands::Day15_2 => day15_part2(input).to_string(),
+        Commands::Day16_1 => day16_part1(input).to_string(),
+        Commands::Day16_2 => day16_part2(input).to_string(),
+        Commands::Day17_1 => day17_part1(input),
+        Commands::Day17_2 => day17_part2(input).to_string(),
     };
 
     println!("Result: {result}")

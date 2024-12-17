@@ -132,7 +132,7 @@ impl Warehouse {
     }
 
     fn has_wall(&self, position: &Position) -> bool {
-        self.walls.contains(&position)
+        self.walls.contains(position)
             || (position.x > 0
                 && self.large_boxes
                 && self.walls.contains(&Position {
