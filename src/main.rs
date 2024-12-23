@@ -7,7 +7,13 @@ mod day14;
 mod day15;
 mod day16;
 mod day17;
+mod day18;
+mod day19;
 mod day2;
+mod day20;
+mod day21;
+mod day22;
+mod day23;
 mod day3;
 mod day4;
 mod day5;
@@ -27,7 +33,13 @@ use day14::{day14_part1, day14_part2};
 use day15::{day15_part1, day15_part2};
 use day16::{day16_part1, day16_part2};
 use day17::{day17_part1, day17_part2};
+use day18::{day18_part1, day18_part2};
+use day19::{day19_part1, day19_part2};
 use day2::{day2_part1, day2_part2};
+use day20::{day20_part1, day20_part2};
+use day21::{day21_part1, day21_part2};
+use day22::{day22_part1, day22_part2};
+use day23::{day23_part1, day23_part2};
 use day3::{day3_part1, day3_part2};
 use day4::{day4_part1, day4_part2};
 use day5::{day5_part1, day5_part2};
@@ -128,6 +140,30 @@ enum Commands {
     Day17_1,
     ///Day 17: Chronospatial Computer: part 2
     Day17_2,
+    ///Day 18: RAM Run: part 1
+    Day18_1,
+    ///Day 18: RAM Run: part 2
+    Day18_2,
+    ///Day 19: Linen Layout: part 1
+    Day19_1,
+    ///Day 19: Linen Layout: part 2
+    Day19_2,
+    ///Day 20: Race Condition: part 1
+    Day20_1,
+    ///Day 20: Race Condition: part 2
+    Day20_2,
+    ///Day 21: Keypad Conundrum: part 1
+    Day21_1,
+    ///Day 21: Keypad Conundrum: part 2
+    Day21_2,
+    ///Day 22: Monkey Market: part 1
+    Day22_1,
+    ///Day 22: Monkey Market: part 2
+    Day22_2,
+    ///Day 23: LAN Party: part 1
+    Day23_1,
+    ///Day 23: LAN Party: part 2
+    Day23_2,
 }
 
 fn main() {
@@ -177,6 +213,18 @@ fn main() {
         Commands::Day16_2 => day16_part2(input).to_string(),
         Commands::Day17_1 => day17_part1(input),
         Commands::Day17_2 => day17_part2(input).to_string(),
+        Commands::Day18_1 => day18_part1(input).to_string(),
+        Commands::Day18_2 => day18_part2(input),
+        Commands::Day19_1 => day19_part1(input).to_string(),
+        Commands::Day19_2 => day19_part2(input).to_string(),
+        Commands::Day20_1 => day20_part1(input).to_string(),
+        Commands::Day20_2 => day20_part2(input).to_string(),
+        Commands::Day21_1 => day21_part1(input).to_string(),
+        Commands::Day21_2 => day21_part2(input).to_string(),
+        Commands::Day22_1 => day22_part1(input).to_string(),
+        Commands::Day22_2 => day22_part2(input).to_string(),
+        Commands::Day23_1 => day23_part1(input).to_string(),
+        Commands::Day23_2 => day23_part2(input).to_string(),
     };
 
     println!("Result: {result}")

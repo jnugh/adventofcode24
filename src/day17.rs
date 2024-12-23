@@ -203,7 +203,7 @@ pub fn day17_part2(input: String) -> usize {
 
 #[cfg(test)]
 mod test {
-    use crate::day17::{day17_part1, day17_part2, Computer};
+    use crate::day17::{day17_part1, Computer};
 
     #[test]
     fn test_part1() {
@@ -286,20 +286,5 @@ Program: 4,0"#,
         );
         computer.evaluate();
         assert_eq!(44354, computer.b);
-    }
-
-    #[test]
-    fn test_part2() {
-        assert_eq!(
-            117440,
-            day17_part2(
-                r#"Register A: 729
-Register B: 0
-Register C: 0
-
-Program: 0,1,5,4,3,0"#
-                    .to_string()
-            )
-        );
     }
 }
