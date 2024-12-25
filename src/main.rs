@@ -15,6 +15,7 @@ mod day21;
 mod day22;
 mod day23;
 mod day24;
+mod day25;
 mod day3;
 mod day4;
 mod day5;
@@ -42,6 +43,7 @@ use day21::{day21_part1, day21_part2};
 use day22::{day22_part1, day22_part2};
 use day23::{day23_part1, day23_part2};
 use day24::{day24_part1, day24_part2};
+use day25::{day25_part1, day25_part2};
 use day3::{day3_part1, day3_part2};
 use day4::{day4_part1, day4_part2};
 use day5::{day5_part1, day5_part2};
@@ -170,6 +172,10 @@ enum Commands {
     Day24_1,
     ///Day 24: Crossed Wires: part 2
     Day24_2,
+    ///Day 25: Code Chronicle: part 1
+    Day25_1,
+    ///Day 25: Code Chronicle: part 2
+    Day25_2,
 }
 
 fn main() {
@@ -233,6 +239,8 @@ fn main() {
         Commands::Day23_2 => day23_part2(input).to_string(),
         Commands::Day24_1 => day24_part1(input).to_string(),
         Commands::Day24_2 => day24_part2(input),
+        Commands::Day25_1 => day25_part1(input).to_string(),
+        Commands::Day25_2 => day25_part2(input).to_string(),
     };
 
     println!("Result: {result}")
