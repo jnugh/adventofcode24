@@ -14,6 +14,7 @@ mod day20;
 mod day21;
 mod day22;
 mod day23;
+mod day24;
 mod day3;
 mod day4;
 mod day5;
@@ -40,6 +41,7 @@ use day20::{day20_part1, day20_part2};
 use day21::{day21_part1, day21_part2};
 use day22::{day22_part1, day22_part2};
 use day23::{day23_part1, day23_part2};
+use day24::{day24_part1, day24_part2};
 use day3::{day3_part1, day3_part2};
 use day4::{day4_part1, day4_part2};
 use day5::{day5_part1, day5_part2};
@@ -164,6 +166,10 @@ enum Commands {
     Day23_1,
     ///Day 23: LAN Party: part 2
     Day23_2,
+    ///Day 24: Crossed Wires: part 1
+    Day24_1,
+    ///Day 24: Crossed Wires: part 2
+    Day24_2,
 }
 
 fn main() {
@@ -225,6 +231,8 @@ fn main() {
         Commands::Day22_2 => day22_part2(input).to_string(),
         Commands::Day23_1 => day23_part1(input).to_string(),
         Commands::Day23_2 => day23_part2(input).to_string(),
+        Commands::Day24_1 => day24_part1(input).to_string(),
+        Commands::Day24_2 => day24_part2(input),
     };
 
     println!("Result: {result}")
